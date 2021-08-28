@@ -1,3 +1,5 @@
+find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
+
 set(SOURCE_FILES
     main.cpp
     Window1.cpp
@@ -19,18 +21,17 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
-
-add_executable(App WIN32 MACOSX_BUNDLE
+add_executable(CuteOwl MACOSX_BUNDLE WIN32
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${UI_SOURCES}
 )
 
-target_link_libraries(App 
+target_link_libraries(CuteOwl
     PRIVATE
         MyLib
         Qt6::Core 
@@ -39,7 +40,7 @@ target_link_libraries(App
 )
 
 if (WIN32)
-    target_link_options(App PRIVATE "/entry:mainCRTStartup")
+    target_link_options(CuteOwl PRIVATE "/entry:mainCRTStartup")
 endif()
 
 if (APPLE)
@@ -48,13 +49,13 @@ if (APPLE)
     # to the conan lib dir.
 
     function(ChangeRPath target file new)
-        add_custom_command(TARGET App
+        add_custom_command(TARGET ${PROJECT_NAME}
                 POST_BUILD COMMAND
                 ${CMAKE_INSTALL_NAME_TOOL} -change @rpath/${file} ${new}/${file}
-                $<TARGET_FILE:App>)
+                $<TARGET_FILE:${PROJECT_NAME}>)
     endfunction()
 
     foreach(qt_lib IN LISTS CONAN_LIBS_QT)
-        ChangeRPath(App lib${qt_lib}.dylib ${CONAN_LIB_DIRS_QT})
+        ChangeRPath(${PROJECT_NAME} lib${qt_lib}.dylib ${CONAN_LIB_DIRS_QT})
     endforeach()
 endif ()
