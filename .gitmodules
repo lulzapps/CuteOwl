@@ -1,0 +1,3 @@
+[submodule "OwlAPI"]
+	path = OwlAPI
+	url = https://github.com/lulzapps/OwlAPI.git
