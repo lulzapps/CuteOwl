@@ -4,7 +4,7 @@ project(CuteOwl)
 
 option(CUTEOWL_UNIT_TESTS "Build unit tests (default OFF)" OFF)
 option(CUTEOWL_COVERAGE "Enable coverage reporting (default OFF)" OFF)
-# option(CUTEOWL_CONAN_QT "Use conan to install Qt (default OFF)" ON)
+option(CUTEOWL_CONAN_QT "Use conan to install Qt (default OFF)" ON)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
