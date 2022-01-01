@@ -23,7 +23,8 @@ jobs:
       fail-fast: false
       matrix:
         build_type: [Debug, Release]
-        coverage: ["ON", "OFF"]
+        # coverage: ["ON", "OFF"] -- disable coverage tests for now
+        coverage: ["OFF"]
         exclude:
           - build_type: Release
             coverage: ON

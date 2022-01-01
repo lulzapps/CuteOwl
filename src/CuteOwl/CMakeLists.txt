@@ -1,4 +1,4 @@
-find_package(Qt6 COMPONENTS Core Gui Widgets QuickWidgets REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
 
 set(SOURCE_FILES
     main.cpp
@@ -45,7 +45,6 @@ target_link_libraries(CuteOwl
         Qt6::Core 
         Qt6::Gui 
         Qt6::Widgets
-        Qt6::QuickWidgets
 )
 
 if (WIN32)
