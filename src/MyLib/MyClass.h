@@ -1,7 +1,7 @@
 #pragma once
 #include <QString>
 
-namespace app
+namespace owl
 {
 
 class MyClass

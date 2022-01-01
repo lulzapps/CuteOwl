@@ -1,20 +1,27 @@
-find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Widgets QuickWidgets REQUIRED)
 
 set(SOURCE_FILES
     main.cpp
-    Window1.cpp
+    MainWindow.cpp
+    SplashScreen.cpp
 )
 
 set(MOC_HEADERS
-    Window1.h
+    MainWindow.h
+    SplashScreen.h
 )
 
 set(HEADER_FILES
     ${MOC_HEADERS}
+    Core.h
 )
 
 set(UI_SOURCES
-    Window1.ui
+    MainWindow.ui
+)
+
+set(QRC_FILES
+    res/Owl.qrc
 )
 
 set(CMAKE_AUTOMOC ON)
@@ -29,6 +36,7 @@ add_executable(CuteOwl MACOSX_BUNDLE WIN32
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${UI_SOURCES}
+    ${QRC_FILES}
 )
 
 target_link_libraries(CuteOwl
@@ -37,6 +45,7 @@ target_link_libraries(CuteOwl
         Qt6::Core 
         Qt6::Gui 
         Qt6::Widgets
+        Qt6::QuickWidgets
 )
 
 if (WIN32)

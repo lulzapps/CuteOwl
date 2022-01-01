@@ -11,7 +11,7 @@ private slots:
 
 void Foo::test1()
 {
-    app::MyClass myclass{"test"};
+    owl::MyClass myclass{"test"};
     QCOMPARE(myclass.appendIt("test"), "test test");
 }
 

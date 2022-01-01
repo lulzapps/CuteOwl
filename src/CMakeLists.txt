@@ -1,2 +1,2 @@
-add_subdirectory(App)
+add_subdirectory(CuteOwl)
 add_subdirectory(MyLib)

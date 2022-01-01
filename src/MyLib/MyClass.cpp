@@ -1,6 +1,6 @@
 #include "MyClass.h"
 
-namespace app
+namespace owl
 {
 
 MyClass::MyClass(const QString& text)
