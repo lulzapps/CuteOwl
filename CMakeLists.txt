@@ -9,17 +9,17 @@ option(CUTEOWL_COVERAGE "Enable coverage reporting (default OFF)" OFF)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# if (CUTEOWL_CONAN_QT)
+ if (CUTEOWL_CONAN_QT)
     include(CMake/conan.cmake)
     conan_cmake_run(REQUIRES
-        qt/6.1.2
+        qt/6.2.2
         libffi/3.4.2
         BASIC_SETUP CMAKE_TARGETS
         GENERATORS cmake_find_package cmake_paths
         BUILD missing
         OPTIONS qt:shared=True)
         include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
-# endif(CUTEOWL_CONAN_QT)
+ endif(CUTEOWL_CONAN_QT)
 
 add_library(coverage_config INTERFACE)
 
