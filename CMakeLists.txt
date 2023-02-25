@@ -8,12 +8,13 @@ option(CUTEOWL_CONAN_QT "Use conan to install Qt (default OFF)" ON)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CONAN_DISABLE_CHECK_COMPILER ON)
 
  if (CUTEOWL_CONAN_QT)
     include(CMake/conan.cmake)
     conan_cmake_run(REQUIRES
-        qt/6.2.2
-        libffi/3.4.2
+        openssl/1.1.1t
+        qt/6.4.2
         BASIC_SETUP CMAKE_TARGETS
         GENERATORS cmake_find_package cmake_paths
         BUILD missing

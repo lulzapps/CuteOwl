@@ -1,3 +1,6 @@
+#include <iostream>
+#include <sstream>
+
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QGridLayout>
@@ -8,51 +11,42 @@
 
 #include "SplashScreen.h"
 #include "MainWindow.h"
+#include "OwlApplication.h"
  
 int main(int argc, char *argv[]) 
 {
-    QApplication app(argc, argv);
+    int retval = 0;
 
-    owl::SplashScreen splash(QPixmap{":/images/splash-bg.png"});
-    splash.show();
-    app.processEvents();
+    try
+    {
+        owl::OwlApplication app(argc, &argv);
 
-    owl::MainWindow window;
+        owl::SplashScreen splash(QPixmap{":/images/splash-bg.png"});
+        splash.show();
+        app.processEvents();
 
-    // finish the splash screen
-    splash.finish(&window);
+        owl::MainWindow window;
 
-    // show the main window
-    window.show();
-    return app.exec();
+        // finish the splash screen
+        splash.finish(&window);
 
+        // show the main window
+        window.show();
+        retval = app.exec();
+    }
+    catch (const std::exception& ex)
+    {
+        std::cerr
+            << "There was an unrecoverable error: "
+            << ex.what()
+            << std::endl;
 
- 
-//    QWidget widget;
-//    widget.resize(640, 480);
-//    widget.setWindowTitle("Hello, world!!!");
-    
-//    QGridLayout *gridLayout = new QGridLayout(&widget);
+        retval = 1;
+    }
+    catch(...)
+    {
+        std::cerr << "There was an unknown error" << std::endl;
+    }
 
-//    owl::MyClass obj("Hello");
-//    QLabel* label = new QLabel(obj.appendIt("library world!!"));
-
-//    QPushButton* btn1 = new QPushButton("Push Me");
-//    QObject::connect(btn1, &QPushButton::released, &widget,
-//        []()
-//        {
-//            owl::MainWindow* dialog = new owl::MainWindow();
-//            dialog->setModal(true);
-//            dialog->setWindowModality(Qt::ApplicationModal);
-//            dialog->exec();
-//            delete dialog;
-//        });
-
-//    label->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-//    gridLayout->addWidget(label);
-//    gridLayout->addWidget(btn1);
- 
-//    widget.show();
- 
-//    return app.exec();
+    return retval;
 }

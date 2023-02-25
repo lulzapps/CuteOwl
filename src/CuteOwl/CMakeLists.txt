@@ -3,11 +3,13 @@ find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
 set(SOURCE_FILES
     main.cpp
     MainWindow.cpp
+    OwlApplication.cpp
     SplashScreen.cpp
 )
 
 set(MOC_HEADERS
     MainWindow.h
+    OwlApplication.h
     SplashScreen.h
 )
 
@@ -23,6 +25,12 @@ set(UI_SOURCES
 set(QRC_FILES
     res/Owl.qrc
 )
+
+if (APPLE)
+    list(APPEND SOURCE_FILES
+        TitleBarSetupMac.mm
+    )
+endif(APPLE)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)

@@ -17,6 +17,15 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
 
+protected:
+    void closeEvent(QCloseEvent* event);
+
+private:
+    void loadMenus();
+
+    void loadSettings();
+    void writeSettings();
+
 };
 
 } // namespace
