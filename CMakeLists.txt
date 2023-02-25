@@ -12,14 +12,27 @@ set(CONAN_DISABLE_CHECK_COMPILER ON)
 
  if (CUTEOWL_CONAN_QT)
     include(CMake/conan.cmake)
-    conan_cmake_run(REQUIRES
-        openssl/1.1.1t
-        qt/6.4.2
-        BASIC_SETUP CMAKE_TARGETS
-        GENERATORS cmake_find_package cmake_paths
-        BUILD missing
-        OPTIONS qt:shared=True)
-        include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
+    conan_cmake_configure(
+        REQUIRES
+            openssl/1.1.1t
+            qt/6.4.2
+        GENERATORS
+            cmake_find_package
+        OPTIONS
+            qt:shared=True
+    )
+
+    conan_cmake_autodetect(settings)
+
+    conan_cmake_install(PATH_OR_REFERENCE .
+        BUILD
+            missing
+        REMOTE
+            conancenter
+        SETTINGS
+            ${settings}
+    )
+
  endif(CUTEOWL_CONAN_QT)
 
 add_library(coverage_config INTERFACE)
