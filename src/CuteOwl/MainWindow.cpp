@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget* parent)
     setupTitleBar(this->winId());
 
     // create a blank title bar for the post view dock
-    dockWidget->setTitleBarWidget(new QWidget(dockWidget));
+    // serverPanel->setTitleBarWidget(new QWidget(dockWidget));
 
     QTimer::singleShot(0, this,
         [this]()
@@ -28,10 +28,10 @@ MainWindow::MainWindow(QWidget* parent)
 
 void MainWindow::loadMenus()
 {
-    // File
-    {
-        dockWidget->setTitleBarWidget(new QWidget(dockWidget));
-    }
+    // // File
+    // {
+    //     dockWidget->setTitleBarWidget(new QWidget(dockWidget));
+    // }
 
 }
 

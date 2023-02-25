@@ -22,11 +22,19 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout"/>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
-  <widget class="QDockWidget" name="dockWidget">
+  <widget class="QDockWidget" name="leftHandPanel">
    <property name="floating">
     <bool>false</bool>
    </property>
@@ -39,19 +47,19 @@
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="dockWidgetContents">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <widget class="owl::ServerPanel" name="dockWidgetContents">
+    <layout class="QHBoxLayout" name="horizontalLayout_2"/>
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>owl::ServerPanel</class>
+   <extends>QWidget</extends>
+   <header>ServerPanel.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -1,15 +1,19 @@
-find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt6 
+    COMPONENTS 
+    Core Gui Widgets QuickWidgets REQUIRED)
 
 set(SOURCE_FILES
     main.cpp
     MainWindow.cpp
     OwlApplication.cpp
+    ServerPanel.cpp
     SplashScreen.cpp
 )
 
 set(MOC_HEADERS
     MainWindow.h
     OwlApplication.h
+    ServerPanel.h
     SplashScreen.h
 )
 
@@ -53,6 +57,7 @@ target_link_libraries(CuteOwl
         Qt6::Core 
         Qt6::Gui 
         Qt6::Widgets
+        Qt6::QuickWidgets
 )
 
 if (WIN32)
