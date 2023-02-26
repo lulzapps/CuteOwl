@@ -10,14 +10,19 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CONAN_DISABLE_CHECK_COMPILER ON)
 
+# required so that find_package() can find conan generated files
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}")
+
  if (CUTEOWL_CONAN_QT)
     include(CMake/conan.cmake)
     conan_cmake_configure(
         REQUIRES
+            libiconv/1.16
             openssl/1.1.1t
             qt/6.4.2
         GENERATORS
             cmake_find_package
+            cmake_paths
         OPTIONS
             qt:shared=True
     )

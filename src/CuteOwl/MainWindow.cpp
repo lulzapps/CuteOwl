@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
     setupUi(this);
-    setupTitleBar(this->winId());
 
     // create a blank title bar for the post view dock
     // serverPanel->setTitleBarWidget(new QWidget(dockWidget));

@@ -1,5 +1,3 @@
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
-
 find_package(Qt6 COMPONENTS Core REQUIRED)
 
 set(SOURCE_FILES
