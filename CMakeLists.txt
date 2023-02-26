@@ -17,7 +17,6 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}")
     include(CMake/conan.cmake)
     conan_cmake_configure(
         REQUIRES
-            libiconv/1.16
             openssl/1.1.1t
             qt/6.4.2
         GENERATORS
@@ -25,6 +24,8 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_BINARY_DIR}")
             cmake_paths
         OPTIONS
             qt:shared=True
+            qt:qtshadertools=True
+            qt:qtdeclarative=True
     )
 
     conan_cmake_autodetect(settings)

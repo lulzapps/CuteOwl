@@ -1,6 +1,9 @@
-find_package(Qt6 
-    COMPONENTS 
-    Core Gui Widgets QuickWidgets REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS 
+    Core 
+    Gui 
+    Widgets 
+    QuickWidgets
+)
 
 set(SOURCE_FILES
     main.cpp
