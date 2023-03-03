@@ -10,6 +10,7 @@ ServerPanel::ServerPanel(QWidget* parent/* = nullptr*/)
     setFocusPolicy(Qt::TabFocus);
     setResizeMode(QQuickWidget::SizeRootObjectToView);
 
+    setSource(QUrl("qrc:/qml/serverPanel.qml"));
 }
 
 } // namespace owl

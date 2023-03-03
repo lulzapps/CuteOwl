@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>images/splash-bg.png</file>
+        <file>qml/serverPanel.qml</file>
     </qresource>
 </RCC>

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
@@ -47,7 +47,7 @@
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
-   <widget class="owl::ServerPanel" name="dockWidgetContents">
+   <widget class="owl::ServerPanel" name="serverPanel">
     <layout class="QHBoxLayout" name="horizontalLayout_2"/>
    </widget>
   </widget>
