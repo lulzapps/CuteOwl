@@ -1,5 +1,9 @@
 #pragma once
 #include <QtGui>
+
+#include <QQuickView>
+#include <QQmlEngine>
+
 #include "ui_MainWindow.h"
 
 namespace Ui
@@ -9,6 +13,17 @@ namespace Ui
 
 namespace owl
 {
+
+class AppWindow : public QQuickView
+{
+    Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("AppWindow is not creatable from QML")
+
+public:
+    explicit AppWindow();
+    ~AppWindow();
+};
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {

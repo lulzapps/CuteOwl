@@ -9,6 +9,16 @@ extern "C" void setupTitleBar(WId winId);
 namespace owl
 {
 
+AppWindow::AppWindow()
+{
+
+}
+
+AppWindow::~AppWindow()
+{
+    
+}
+
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {

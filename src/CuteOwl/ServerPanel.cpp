@@ -26,13 +26,13 @@ ServerPanel::ServerPanel(QWidget* parent/* = nullptr*/)
     ////root->setContextProperty("model", QVariant::fromValue(&model));
     //setSource(QUrl("qrc:/qml/serverPanel.qml"));
 
-    auto view = new QQuickView();
-    view->setSource(QUrl("qrc:/qml/serverPanel.qml"));
-    auto container = QWidget::createWindowContainer(view, this->parentWidget());
+//    auto view = new QQuickView();
+//    view->setSource(QUrl("qrc:/qml/serverPanel.qml"));
+//    auto container = QWidget::createWindowContainer(view, this->parentWidget());
 
-    auto parentw = this->parentWidget();
-    auto layout = parentw->layout();
-    layout->addWidget(container);
+//    auto parentw = this->parentWidget();
+//    auto layout = parentw->layout();
+//    layout->addWidget(container);
     //this->parentWidget()->layout()->addWidget(container);
 }
 

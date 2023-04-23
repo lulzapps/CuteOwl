@@ -7,6 +7,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 
+#include <QQmlApplicationEngine>
+
 #include "../MyLib/MyClass.h"
 
 #include "SplashScreen.h"
@@ -15,38 +17,51 @@
  
 int main(int argc, char *argv[]) 
 {
-    int retval = 0;
+    owl::OwlApplication app(argc, &argv);
 
-    try
-    {
-        owl::OwlApplication app(argc, &argv);
+    // owl::AppWindow appwindow;
+    // appwindow.setSource(QUrl("qrc:/qml/main.qml"));
+    // "qrc:/qml/serverPanel.qml"
 
-        owl::SplashScreen splash(QPixmap{":/images/splash-bg.png"});
-        splash.show();
-        app.processEvents();
+    QQmlApplicationEngine engine("qrc:/qml/main.qml");
+//    appwindow.show();
+//    engine.show();
 
-        owl::MainWindow window;
+    return app.exec();
 
-        // finish the splash screen
-        splash.finish(&window);
 
-        // show the main window
-        window.show();
-        retval = app.exec();
-    }
-    catch (const std::exception& ex)
-    {
-        std::cerr
-            << "There was an unrecoverable error: "
-            << ex.what()
-            << std::endl;
+    // int retval = 0;
 
-        retval = 1;
-    }
-    catch(...)
-    {
-        std::cerr << "There was an unknown error" << std::endl;
-    }
+    // try
+    // {
+    //     owl::OwlApplication app(argc, &argv);
 
-    return retval;
+    //     owl::SplashScreen splash(QPixmap{":/images/splash-bg.png"});
+    //     splash.show();
+    //     app.processEvents();
+
+    //     owl::MainWindow window;
+
+    //     // finish the splash screen
+    //     splash.finish(&window);
+
+    //     // show the main window
+    //     window.show();
+    //     retval = app.exec();
+    // }
+    // catch (const std::exception& ex)
+    // {
+    //     std::cerr
+    //         << "There was an unrecoverable error: "
+    //         << ex.what()
+    //         << std::endl;
+
+    //     retval = 1;
+    // }
+    // catch(...)
+    // {
+    //     std::cerr << "There was an unknown error" << std::endl;
+    // }
+
+    // return retval;
 }
