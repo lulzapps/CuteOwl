@@ -1,13 +1,27 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.3
-import QtQuick.Controls 1.2 as OldControls
 
 ApplicationWindow
 {
     id: appWindow
     visible: true
     width: 820; height: 512
+
+    Dialog
+    {
+        id: dialog
+        modal: true
+        visible: false
+        anchors.centerIn: parent
+
+        title: "Title"
+        standardButtons: Dialog.Ok | Dialog.Cancel
+
+
+        onAccepted: console.log("Ok clicked")
+        onRejected: console.log("Cancel clicked")
+    }
 
     menuBar: MenuBar
     {
@@ -20,6 +34,7 @@ ApplicationWindow
             MenuItem
             {
                 text: qsTr("Open")
+                onTriggered: dialog.visible = true
             }
             MenuItem
             {
@@ -40,8 +55,10 @@ ApplicationWindow
             anchors.fill: parent
             ToolButton 
             {
-                text: qsTr("‹")
+                text: qsTr("New Server")
+//                icon: "qrc:/images/splash-bg.png"
                 onClicked: stack.pop()
+                icon.source: "/Users/addy/src/lulzapps/CuteOwl/src/CuteOwl/res/images/spash-bg.png"
             }
             
             Label 

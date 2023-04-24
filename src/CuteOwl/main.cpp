@@ -17,51 +17,27 @@
  
 int main(int argc, char *argv[]) 
 {
-    owl::OwlApplication app(argc, &argv);
+    int retval = 0;
 
-    // owl::AppWindow appwindow;
-    // appwindow.setSource(QUrl("qrc:/qml/main.qml"));
-    // "qrc:/qml/serverPanel.qml"
+    try
+    {
+        owl::OwlApplication app(argc, &argv);
+        owl::AppEngine engine("qrc:/qml/main.qml");
+        return app.exec();
+    }
+     catch (const std::exception& ex)
+     {
+         std::cerr
+             << "There was an unrecoverable error: "
+             << ex.what()
+             << std::endl;
 
-    QQmlApplicationEngine engine("qrc:/qml/main.qml");
-//    appwindow.show();
-//    engine.show();
+         retval = 1;
+     }
+     catch(...)
+     {
+         std::cerr << "There was an unknown error" << std::endl;
+     }
 
-    return app.exec();
-
-
-    // int retval = 0;
-
-    // try
-    // {
-    //     owl::OwlApplication app(argc, &argv);
-
-    //     owl::SplashScreen splash(QPixmap{":/images/splash-bg.png"});
-    //     splash.show();
-    //     app.processEvents();
-
-    //     owl::MainWindow window;
-
-    //     // finish the splash screen
-    //     splash.finish(&window);
-
-    //     // show the main window
-    //     window.show();
-    //     retval = app.exec();
-    // }
-    // catch (const std::exception& ex)
-    // {
-    //     std::cerr
-    //         << "There was an unrecoverable error: "
-    //         << ex.what()
-    //         << std::endl;
-
-    //     retval = 1;
-    // }
-    // catch(...)
-    // {
-    //     std::cerr << "There was an unknown error" << std::endl;
-    // }
-
-    // return retval;
+     return retval;
 }

@@ -4,6 +4,8 @@
 #include <QQuickView>
 #include <QQmlEngine>
 
+#include <QQmlApplicationEngine>
+
 #include "ui_MainWindow.h"
 
 namespace Ui
@@ -13,6 +15,15 @@ namespace Ui
 
 namespace owl
 {
+
+class AppEngine : public QQmlApplicationEngine
+{
+    Q_OBJECT
+
+public:
+    using QQmlApplicationEngine::QQmlApplicationEngine;
+
+};
 
 class AppWindow : public QQuickView
 {
