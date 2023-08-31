@@ -56,7 +56,6 @@ ApplicationWindow
             ToolButton 
             {
                 text: qsTr("New Server")
-//                icon: "qrc:/images/splash-bg.png"
                 onClicked: stack.pop()
                 icon.source: "/Users/addy/src/lulzapps/CuteOwl/src/CuteOwl/res/images/spash-bg.png"
             }
@@ -86,13 +85,36 @@ ApplicationWindow
         color: "lightgray"
         anchors.fill: parent
 
-        Text 
+        ColumnLayout
         {
-            id: helloText
-            text: "Hello world!"
-            y: 30
-            anchors.horizontalCenter: page.horizontalCenter
-            font.pointSize: 24; font.bold: true
+            anchors.fill: parent
+
+            Rectangle
+            {
+                color: "yellow"
+                Text
+                {
+                    id: helloText
+                    text: "Hello world!"
+                    y: 30
+                    anchors.horizontalCenter: page.horizontalCenter
+                    font.pointSize: 24;
+                    font.bold: true
+                }
+            }
+
+            Rectangle
+            {
+                color: "red"
+//                Text
+//                {
+//                    id: helloText2
+//                    text: "Hello world2!"
+//                    y: 30
+//                    anchors.horizontalCenter: page.horizontalCenter
+//                    font.pointSize: 24; font.bold: true
+//                }
+            }
         }
     }
 

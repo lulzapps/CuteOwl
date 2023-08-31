@@ -21,9 +21,12 @@ int main(int argc, char *argv[])
 
     try
     {
-        owl::OwlApplication app(argc, &argv);
-        owl::AppEngine engine("qrc:/qml/main.qml");
-        return app.exec();
+        auto app = std::make_unique<owl::OwlApplication>(argc, &argv);
+        auto engine = std::make_unique<owl::AppWindow>(QUrl("qrc:/qml/main.qml"));
+        retval = app->exec();
+
+        engine.release();
+        app.release();
     }
      catch (const std::exception& ex)
      {

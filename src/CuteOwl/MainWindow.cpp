@@ -9,15 +9,46 @@ extern "C" void setupTitleBar(WId winId);
 namespace owl
 {
 
-AppWindow::AppWindow()
+AppWindow::AppWindow(const QUrl &url)
+    : QQmlApplicationEngine(url)
 {
+    QMenuBar *menuBar = new QMenuBar(nullptr);
+    auto editMenu = menuBar->addMenu("Edit");
+    auto newBoardAction = editMenu->addAction(tr("New Connection"));
+    QObject::connect(newBoardAction, &QAction::triggered, this, &QQmlApplicationEngine::quit);
 
+    auto aboutAction = menuBar->addAction("&About...");
+    aboutAction->setMenuRole(QAction::AboutRole);
+    QObject::connect(aboutAction, &QAction::triggered, this, &QQmlApplicationEngine::quit);
+
+
+    auto helpMenu = menuBar->addMenu("Help");
+    auto twitterAction = helpMenu->addAction("Twitter");
+    QObject::connect(twitterAction, &QAction::triggered, this, &QQmlApplicationEngine::quit);
+
+    auto quitAction = menuBar->addAction("E&xit");
+    quitAction->setMenuRole(QAction::QuitRole);
+    quitAction->setShortcuts(QKeySequence::Quit);
+    QObject::connect(quitAction, &QAction::triggered, this, &QQmlApplicationEngine::quit);
+
+//    auto bobMenu = menuBar->addMenu("BOB");
+//    auto mikeAction = helpMenu->addAction("&About...");
+//    twitterAction->setMenuRole(QAction::AboutRole);
+//    QObject::connect(twitterAction, &QAction::triggered, this, &QQmlApplicationEngine::quit);
 }
 
-AppWindow::~AppWindow()
-{
+//AppWindow::AppWindow()
+//{
+//    QMenuBar *menuBar = new QMenuBar(nullptr);
+//    QAction* boob = menuBar->addMenu("TVDAD")->addAction("BOB");
+//    QAction *quitAction = menuBar->addMenu("File")->addAction("Quit");
+//    QObject::connect(quitAction, &QAction::triggered, this, &QQuickView::close);
+//}
+
+//AppWindow::~AppWindow()
+//{
     
-}
+//}
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)

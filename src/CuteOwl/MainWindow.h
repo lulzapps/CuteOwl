@@ -16,25 +16,27 @@ namespace Ui
 namespace owl
 {
 
-class AppEngine : public QQmlApplicationEngine
+class AppWindow : public QQmlApplicationEngine
 {
     Q_OBJECT
 
 public:
-    using QQmlApplicationEngine::QQmlApplicationEngine;
+//    using QQmlApplicationEngine::QQmlApplicationEngine;
+    explicit AppWindow(const QUrl &url);
+//    explicit App
 
 };
 
-class AppWindow : public QQuickView
-{
-    Q_OBJECT
-    QML_ELEMENT
-    QML_UNCREATABLE("AppWindow is not creatable from QML")
+//class AppWindow : public QQuickView
+//{
+//    Q_OBJECT
+//    QML_ELEMENT
+//    QML_UNCREATABLE("AppWindow is not creatable from QML")
 
-public:
-    explicit AppWindow();
-    ~AppWindow();
-};
+//public:
+//    explicit AppWindow();
+//    ~AppWindow();
+//};
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {
