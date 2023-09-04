@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include <QUrl>
 #include <QMenuBar>
 
@@ -29,7 +31,12 @@ AppWindow::AppWindow(const QUrl &url)
     auto quitAction = menuBar->addAction("E&xit");
     quitAction->setMenuRole(QAction::QuitRole);
     quitAction->setShortcuts(QKeySequence::Quit);
-    QObject::connect(quitAction, &QAction::triggered, this, &QQmlApplicationEngine::quit);
+    //QObject::connect(quitAction, &QAction::triggered, this, &AppWindow::quitApplication);
+    QObject::connect(quitAction, &QAction::triggered, this, 
+        []()
+        {
+            std::cout << "hi" << std::endl;
+        });
 
 //    auto bobMenu = menuBar->addMenu("BOB");
 //    auto mikeAction = helpMenu->addAction("&About...");
@@ -49,6 +56,18 @@ AppWindow::AppWindow(const QUrl &url)
 //{
     
 //}
+
+void AppWindow::quitApplication()
+{
+    QQmlApplicationEngine::quit();
+}
+
+void AppWindow::closeEvent(QCloseEvent* event)
+{
+    Q_UNUSED(event);
+    quit();
+}
+
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)

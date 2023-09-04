@@ -25,6 +25,11 @@ public:
     explicit AppWindow(const QUrl &url);
 //    explicit App
 
+protected:
+    void closeEvent(QCloseEvent* event);
+
+private:
+    void quitApplication();
 };
 
 //class AppWindow : public QQuickView
